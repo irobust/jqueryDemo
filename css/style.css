@@ -1,0 +1,12 @@
+.container, footer{
+  background-color: #ddd !important;
+}
+
+#content span{
+  color: #555;
+}
+
+/*form{
+  width: 80%;
+  margin: auto;
+}*/

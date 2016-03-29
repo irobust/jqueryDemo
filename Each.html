@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .highlight{
+      color: #fff;
+      background-color: #999;
+    }
+  </style>
+  <script src="js/jquery-1.12.2.min.js"></script>
+  <script>
+    $(function(){
+      $('li').each(function(index){
+        if(index % 2 === 0){
+        //   $(this).css({
+        //     'background-color' :'#999',
+        //     'color' : '#fff'
+        // });
+        $(this).addClass('highlight');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <ul>
+    <li>Item1</li>
+    <li>Item2</li>
+    <li>Item3</li>
+    <li>Item4</li>
+    <li>Item5</li>
+    <li>Item6</li>
+    <li>Item7</li>
+    <li>Item8</li>
+    <li>Item9</li>
+  </ul>
+</body>
+</html>

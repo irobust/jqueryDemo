@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    #content{
+      background-color: black;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script>
+    // $(document).ready(function(){
+    //
+    // });
+
+    $(function(){
+      // 1. ตามชื่อ elements
+      $('div').text('Hello World!');
+
+      // 2. ตาม id
+      $('#content').text('Hello World!');
+
+      // 3. ตามชื่อ class
+      $('.container').text('Hello World!');
+    });
+
+  </script>
+</head>
+<body>
+  <header id="content" class="container" style="background-color: #41C5EF;">
+    <span>I</span>Robust Co.,Ltd
+  </header>
+  <footer>Copy right</footer>
+</body>
+</html>
