@@ -12,12 +12,25 @@
     .highlight{
       background-color: #ddd;
     }
+
+    #btnSubmit{
+      margin-right: 100px;
+    }
   </style>
   <script src="js/jquery-1.12.2.min.js"></script>
   <script>
+    function select(btn){
+      $(btn).parents('tr').toggleClass('highlight');
+    }
     $(function(){
       $('.btnSelect').click(function(){
-        $(this).parents('tr').toggleClass('highlight');
+        select(this);
+      });
+
+      $('.btnUpdate').click(function(){
+        var currentValue = parseInt($(this).parents('tr').find('input[name=age]').val());
+        currentValue += 50;
+        $(this).parents('tr').find('input[name=age]').val(currentValue);
       });
     });
   </script>
@@ -27,35 +40,72 @@
     <thead>
       <th>Firstname</th>
       <th>Lastname</th>
+      <th>Age</th>
       <th>Command</th>
     </thead>
     <tbody>
       <tr>
         <td>John</td>
         <td>Doe</td>
-        <td><button class="btnSelect">Select</button></td>
+        <td>
+          <input type="text" name="age" value="0" />
+          <input type="hidden" name="id" value="1" />
+        </td>
+        <td>
+          <button class="btnSelect btn btn-primary">Select</button>
+          <button class="btnUpdate btn btn-success">Update</button>
+        </td>
       </tr>
       <tr>
         <td>John</td>
         <td>Doe</td>
-        <td><button class="btnSelect">Select</button></td>
+        <td>
+          <input type="text" name="age" value="0" />
+          <input type="hidden" name="id" value="2" />
+        </td>
+        <td>
+          <button class="btnSelect btn btn-primary">Select</button>
+          <button class="btnUpdate btn btn-success">Update</button>
+        </td>
       </tr>
       <tr>
         <td>John</td>
         <td>Doe</td>
-        <td><button class="btnSelect">Select</button></td>
+        <td>
+          <input type="text" name="age" value="0" />
+          <input type="hidden" name="id" value="3" />
+        </td>
+        <td>
+          <button class="btnSelect btn btn-primary">Select</button>
+          <button class="btnUpdate btn btn-success">Update</button>
+        </td>
       </tr>
       <tr>
         <td>John</td>
         <td>Doe</td>
-        <td><button class="btnSelect">Select</button></td>
+        <td>
+          <input type="text" name="age" value="0" />
+          <input type="hidden" name="id" value="4" />
+        </td>
+        <td>
+          <button class="btnSelect btn btn-primary">Select</button>
+          <button class="btnUpdate btn btn-success">Update</button>
+        </td>
       </tr>
       <tr>
         <td>John</td>
         <td>Doe</td>
-        <td><button class="btnSelect">Select</button></td>
+        <td>
+          <input type="text" name="age" value="0" />
+          <input type="hidden" name="id" value="5" />
+        </td>
+        <td>
+          <button class="btnSelect btn btn-primary">Select</button>
+          <button class="btnUpdate btn btn-success">Update</button>
+        </td>
       </tr>
     </tbody>
   </table>
+  <input type="button" class="btn btn-info pull-right" id="btnSubmit" value="Submit" />
 </body>
 </html>
