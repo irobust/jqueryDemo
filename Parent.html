@@ -32,6 +32,17 @@
         currentValue += 50;
         $(this).parents('tr').find('input[name=age]').val(currentValue);
       });
+
+      $('#btnSubmit').click(function(){
+        var data = [];
+          $('input[type=text]').each(function(){
+            var obj = {};
+            obj.age = this.value;
+            obj.id  = $(this).next().val(); // $(this).data('id');
+            data.push(obj);
+          });
+          console.log(data);
+      });
     });
   </script>
 </head>

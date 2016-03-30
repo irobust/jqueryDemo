@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .hide{
+      display: none;
+      /*visibility: hidden;*/
+    }
+
+    html, body{
+      height: 100%;
+      margin: 0px;
+    }
+
+    div{
+      height: 100%;
+      background-color: #ddd;
+    }
+  </style>
+  <script src="js/jquery-1.12.2.min.js"></script>
+  <script>
+    $(function(){
+      textbox = $('input');
+      button  = $('button');
+
+      // Disable Control
+      textbox.attr({
+        'disabled': 'disabled',
+        'class'   : 'hide'
+      });
+      button.attr('disabled', 'disabled');
+
+      // Enable Control
+      textbox.removeAttr('disabled');
+      button.removeAttr('disabled');
+
+      button.on('click', function(){
+        // $('input').toggleClass('hide');
+        textbox.toggle('fast');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" name="username" data-id='20' /><button>Add Attribute</button>
+  </div>
+</body>
+</html>

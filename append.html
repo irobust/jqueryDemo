@@ -16,16 +16,85 @@
         {id: 2, hobby: 'Movies'},
         {id: 3, hobby: 'Music'}
       ];
+
+      var saveClick = function(){
+        // 1. ดึงค่าจาก textbox มาเก็บไว้
+        var firstname = $('input[name=firstname]').val();
+        var lastname  = $('input[name=lastname]').val();
+        var age       = $('input[name=age]').val();
+
+        // 2. สร้างแถวใหม่
+        var newRow = $('#template').clone(true); // ใส่ true เพื่อให้ clone event ด้วย
+
+        // 3. bind ค่าจากใน textbox ไปใส่ให้กับ row ใหม่
+        newRow.find('td:eq(0)').text(firstname);
+        newRow.find('td:eq(1)').text(lastname);
+        newRow.find('td:eq(2)').text(age);
+        newRow.removeAttr('id');
+
+        // 4. แทรกแถวใหม่ไว้ก่อน แถวที่เป็น input
+        newRow.insertBefore($('#input')).fadeIn();
+      }
+
+      var deleteClick = function(){
+        $(this).closest('tr').fadeOut(function(){
+          // after fade out already
+          this.remove();
+        });
+      }
+
       $(function(){
         // $('div').append('Test');
         // $('<option></option>').val('1').html('Soccer').appendTo('#hobbies');
+
+        $.each(data, function(){
+          $('<option></option>').val(this.id).html(this.hobby)
+                                .appendTo('#hobbies');
+        });
+
+        $('#btnSave').click(saveClick);
+
+        $('.btnDelete').click(deleteClick);
+
+        $('.panel').slideUp(4000).slideDown(4000);
+
       });
   </script>
 </head>
 <body>
   <h1>Hobbies</h1>
   <select id="hobbies" class="form-control">
-    <option value="-99"><-------- เลือกงานอดิเรก ---------></option>
+    <option value="-99">&lt;-------- เลือกงานอดิเรก ---------&gt;</option>
   </select>
+
+  <div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading" style="text-align:center;">Panel heading</div>
+      <!-- table.table>thead>tr>th*4 -->
+      <table class="table table-strip" id="member">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Command</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="template" style="display:none;">
+            <td>Demo</td>
+            <td>Demo</td>
+            <td>3</td>
+            <td><button class="btn btn-danger btnDelete">Delete</button></td>
+          </tr>
+          <tr id="input">
+            <td><input type="text" name="firstname" /></td>
+            <td><input type="text" name="lastname" /></td>
+            <td><input type="text" name="age" value="0"></td>
+            <td><button class="btn btn-primary" id="btnSave">Save</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </body>
 </html>

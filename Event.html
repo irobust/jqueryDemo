@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/jquery-1.12.2.min.js"></script>
+  <script>
+      $(function(){
+        $('button').click(function(e){
+          $('video').get(0).play();
+          e.preventDefault();
+        });
+
+        $('video').on('play', function(e){
+          $('h1').text('Video Playing ...');
+        });
+
+        // $('button:eq(0)').trigger('click');
+        // $('video').trigger('play');
+      });
+  </script>
+</head>
+<body>
+  <h1></h1>
+  <video controls>
+    <source src="videos/echo-hereweare.mp4"></source>
+    <source src="videos/echo-hereweare.ogv"></source>
+  </video>
+  <form action="">
+    <button type="submit">Play</button>
+  </form>
+</body>
+</html>

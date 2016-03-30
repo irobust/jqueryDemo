@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/jquery-1.12.2.min.js"></script>
+  <script>
+    $(function(){
+      $('<li/>').html('<button>Item</button>').appendTo('#menu');
+
+      $('#menu').on('click', 'button', function(){
+        console.log('Click button.');
+      });
+
+      setTimeout(function(){
+        $('<li/>').html('<button>Item</button>').appendTo('#menu');
+      }, 4000);
+    });
+  </script>
+</head>
+<body>
+  <ul id="menu"></ul>
+</body>
+</html>
