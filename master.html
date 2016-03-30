@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo Application</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+  <script src="js/jquery-1.12.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script>
+      function loadPage(page){
+        // รับค่าเป็น HTML
+        if(page != "") {
+          var param = {};
+          if(location.search != ""){
+            param.number = location.search.substring(4);  // { number : '1002'}
+          }
+          $('#content').load('http://localhost/PHPDemo/Workshop/'+ page +'.php', param);
+          return;
+        }
+
+        // รับค่าเป็น JSON
+        if(page != ""){
+          $('#content').load('partial/' + page + '.html');
+        }else{
+          $('#content').load('partial/home.html');
+        }
+      }
+      $(function(){
+        $('a').click(function(){
+            var page = $(this).attr('href').substring(1);
+            loadPage(page);
+        });
+        var page = location.hash.substring(1);
+        loadPage(page);
+    });
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="true">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="http://irobust.co.th/ci/asset/img/logo.jpg" width="40px" />
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#home">Home <span class="sr-only">(current)</span></a></li>
+          <li class=""><a href="#service">Service <span class="sr-only">(current)</span></a></li>
+          <li class=""><a href="#employees">Employee<span class="sr-only">(current)</span></a></li>
+          <li class=""><a href="#contact">Contact Us <span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content"></div>
+</body>
+</html>
